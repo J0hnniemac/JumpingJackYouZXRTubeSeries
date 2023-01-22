@@ -33,6 +33,10 @@ public class JumpingJackGame : Game
     //Gaps info
     
     private List<Gap> _gaps;
+    
+    //Jack Infor
+    private Texture2D _jackTexture2D;
+    private Jack _jack;
     public JumpingJackGame()
     {
        
@@ -57,6 +61,7 @@ public class JumpingJackGame : Game
         InitRoads();
         
         InitFirst2Gaps();
+        InitJack();
     }
 
     protected override void LoadContent()
@@ -64,6 +69,8 @@ public class JumpingJackGame : Game
         _spriteBatch = new SpriteBatch(GraphicsDevice);
 
         // TODO: use this.Content to load your game content here
+        _jackTexture2D = Content.Load<Texture2D>("JumpingJackSprites");
+
     }
 
     protected override void Update(GameTime gameTime)
@@ -87,6 +94,7 @@ public class JumpingJackGame : Game
         // Draw Stuff
         DrawRoads();
         DrawGaps();
+        DrawJack();
         
         _spriteBatch.End();
         
@@ -182,5 +190,16 @@ public class JumpingJackGame : Game
             g.Draw();
         }
     }
+    
 
+
+    void InitJack()
+    {
+        _jack = new Jack(SideBorder + 256 / 2 - 8, TopBorder + 192 - 12, 16, 16, Color.Aqua, 0, 0, _jackTexture2D);
+    }
+
+    void DrawJack()
+    {
+     _jack.Draw(_spriteBatch);   
+    }
 }
