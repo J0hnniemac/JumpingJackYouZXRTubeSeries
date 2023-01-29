@@ -37,6 +37,12 @@ public class JumpingJackGame : Game
     //Jack Infor
     private Texture2D _jackTexture2D;
     private Jack _jack;
+    
+    //Border Texture
+    private Texture2D _borderTexture2D;
+    
+    
+    
     public JumpingJackGame()
     {
        
@@ -70,7 +76,10 @@ public class JumpingJackGame : Game
 
         // TODO: use this.Content to load your game content here
         _jackTexture2D = Content.Load<Texture2D>("JumpingJackSprites");
-
+        // init empty border texture
+        _borderTexture2D = new Texture2D(GraphicsDevice,1,1);
+        _borderTexture2D.SetData(new[] {Color.White});
+        
     }
 
     protected override void Update(GameTime gameTime)
@@ -78,9 +87,11 @@ public class JumpingJackGame : Game
         if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed ||
             Keyboard.GetState().IsKeyDown(Keys.Escape))
             Exit();
+        ReadJackInput();
 
         // TODO: Add your update logic here
         MoveGaps();
+        _jack.Update();
         base.Update(gameTime);
     }
 
@@ -95,6 +106,7 @@ public class JumpingJackGame : Game
         DrawRoads();
         DrawGaps();
         DrawJack();
+        DrawBorders();
         
         _spriteBatch.End();
         
@@ -201,5 +213,45 @@ public class JumpingJackGame : Game
     void DrawJack()
     {
      _jack.Draw(_spriteBatch);   
+    }
+
+
+    private void ReadJackInput()
+    {
+        if (_jack.IsJumping) return;
+        var dirKeyPressed = false;
+        //read keyboard left and right  
+        if (Keyboard.GetState().IsKeyDown(Keys.Left))
+        {
+            _jack.MoveLeft();
+            dirKeyPressed = true;
+        }
+
+        if (Keyboard.GetState().IsKeyDown(Keys.Right))
+        {
+            _jack.MoveRight();
+            dirKeyPressed = true;
+        }
+
+        if (Keyboard.GetState().IsKeyDown(Keys.Space))
+        {
+            _jack.Jump();
+            dirKeyPressed = true;
+            _jack.IsJumping = true;
+        }
+        
+        if (!dirKeyPressed)
+        {
+            _jack.idle();
+        }
+    }
+
+    void DrawBorders()
+    {
+        //Draw border to spritebuffer
+        _spriteBatch.Draw(_borderTexture2D,new Rectangle(0,0,SideBorder,NativeHeight),BackgroundColor);
+        _spriteBatch.Draw(_borderTexture2D,new Rectangle(NativeWidth - SideBorder ,0,SideBorder,NativeHeight),BackgroundColor);
+
+        
     }
 }
