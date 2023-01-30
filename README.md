@@ -4,4 +4,17 @@ This is the code which was written on Video 1 of the Jumping Jack You ZX Spectru
 
 ## Video 1
 
-[![Video 1](https://i9.ytimg.com/vi/iQs487NmGV0/mqdefault.jpg?v=63c33e8f&sqp=CKyGjZ4G&rs=AOn4CLBMphrahbZTekXVye671hju_BRFJg)](https://youtu.be/iQs487NmGV0)
+Getting the basic setup for the Game.
+https://youtu.be/iQs487NmGV0
+
+## Video 1.5
+Not code, just how I scraped the sprites from the original game.
+https://youtu.be/S5Ia-bMnAwU
+
+## Video 2
+Getting Sprites into MonoGame and using MGCB-Editor to create the SpriteSheet.
+https://youtu.be/iJqwTtOD_Bs
+
+## Video 3
+Moving the Jack around, making him walk and jump.
+https://youtu.be/np07nCUOeBs
