@@ -207,7 +207,7 @@ public class JumpingJackGame : Game
 
     void InitJack()
     {
-        _jack = new Jack(SideBorder + 256 / 2 - 8, TopBorder + 192 - 12, 16, 16, Color.Aqua, 0, 0, _jackTexture2D);
+        _jack = new Jack(SideBorder + 256 / 2 - 8, TopBorder + 192 - 13, 16, 16, Color.Aqua, 0, 8, _jackTexture2D, _gaps, _roads);
     }
 
     void DrawJack()
@@ -219,6 +219,7 @@ public class JumpingJackGame : Game
     private void ReadJackInput()
     {
         if (_jack.IsJumping) return;
+        if (_jack.IsFalling) return;
         var dirKeyPressed = false;
         //read keyboard left and right  
         if (Keyboard.GetState().IsKeyDown(Keys.Left))
