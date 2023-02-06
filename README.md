@@ -18,3 +18,7 @@ https://youtu.be/iJqwTtOD_Bs
 ## Video 3
 Moving the Jack around, making him walk and jump.
 https://youtu.be/np07nCUOeBs
+
+## Video 4
+Adding basic collision for getting through the gaps in the platforms.
+https://youtu.be/0umbIGUTDBk

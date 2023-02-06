@@ -24,7 +24,7 @@ public class Gap
     {
         X = x;
         Y = y;
-        Width = 16;
+        Width = 24;
         Height = 2;
         Color = color;
         Direction = direction;
